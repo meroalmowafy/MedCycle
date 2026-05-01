@@ -10,24 +10,41 @@ namespace MedCycle
 {
     public partial class DonorForm : Form
     {
+        // 1. المتغير الجديد اللي هيشيل الحالة
+        MedStatus incomingStatus;
+
+        //هنا لو المستخدم جاي من شاشه اللوج ان
         public DonorForm()
         {
             InitializeComponent();
         }
 
-        public DonorForm(string medName, int pillsLeft, DateTime expiry)
+        //هنا لو المستخدم جاي من شاشه الرساله
+        public DonorForm(string medName, int pillsLeft, DateTime expiry, MedStatus status)
         {
             InitializeComponent();
 
-            // نكتب الداتا اللي جاتلنا من المريض في المربعات أوتوماتيك
+            // 1. الداتا تتكتب وتتقفل 
             txtMedName.Text = medName;
             numPills.Value = pillsLeft;
             dtpExpiry.Value = expiry;
-
-            //  نقفل المربعات دي عشان المريض مايلعبش فيها ويغير الحسابات
             txtMedName.Enabled = false;
             numPills.Enabled = false;
             dtpExpiry.Enabled = false;
+
+            // 2. نعلم على الاختيار الصح حسب اللي اختاره في الرسالة
+            if (status == MedStatus.DirectDonation)
+            {
+                radDonate.Checked = true;
+            }
+            else if (status == MedStatus.DiscountedSale)
+            {
+                radSell.Checked = true;
+            }
+
+            // 3. نقفل الاختيارين )
+            radDonate.Enabled = false;
+            radSell.Enabled = false;
         }
 
         private void btnDonate_Click(object sender, EventArgs e)
@@ -40,27 +57,54 @@ namespace MedCycle
                 return;
             }
 
+            MedStatus finalStatus;
+
+            if (radDonate.Checked == true)
+            {
+                finalStatus = MedStatus.DirectDonation;
+            }
+            else
+            {
+                finalStatus = MedStatus.DiscountedSale;
+            }
+            
+
+            
+          
             // 2. إنشاء كائن الدواء بالبيانات الجديدة
             Medication newMed = new Medication
             {
-                Name = txtMedName.Text,
+                Name = txtMedName.Text, //اسم الدواء
                 DonorName = txtDonorName.Text, // اسم التبرع
                 DonorPhone = txtDonorPhone.Text, // رقم هاتف التبرع
-                PillsCount = (int)numPills.Value,
-                ExpiryDate = dtpExpiry.Value,
-                Status = MedStatus.DirectDonation
+                PillsCount = (int)numPills.Value, // عدد الحبوب
+                ExpiryDate = dtpExpiry.Value, // تاريخ الانتهاء
+                Status = finalStatus // الحالة النهائية
             };
 
             // 3. إضافة الدواء لقائمة التبرعات
             GlobalData.DonatedMedications.Add(newMed);
 
-            MessageBox.Show($"Thank you! You've donated {newMed.PillsCount} pills of {newMed.Name}.");
+            // رسالة ديناميكية بتتغير حسب اختيار المستخدم
+            if (radDonate.Checked == true)
+            {
+                MessageBox.Show("Thank you for your generous donation!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Your medication has been successfully listed for sale!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             // نفضي المربعات عشان الدواء الجديد
             txtMedName.Clear();
             txtDonorName.Clear();   // نفضي اسم المتبرع
             txtDonorPhone.Clear();  // نفضي رقم المتبرع
             numPills.Value = 1;     // نرجع القيمة لـ 1
+            numPills.Enabled = true;     // فتح عداد الحبوب
+            dtpExpiry.Enabled = true;         // فتح النتيجة بتاعت التاريخ
+            txtMedName.Enabled = true;
+            radDonate.Enabled = true;
+            radSell.Enabled = true;
 
 
         }

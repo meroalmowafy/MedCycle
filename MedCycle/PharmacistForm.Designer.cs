@@ -31,7 +31,7 @@
             dgvDonations = new DataGridView();
             btnRefresh = new Button();
             btnAccept = new Button();
-            button1 = new Button();
+            btnViewInventory = new Button();
             btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvDonations).BeginInit();
             SuspendLayout();
@@ -47,30 +47,30 @@
             dgvDonations.ReadOnly = true;
             dgvDonations.RowHeadersWidth = 51;
             dgvDonations.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDonations.Size = new Size(916, 385);
+            dgvDonations.Size = new Size(908, 363);
             dgvDonations.TabIndex = 0;
             // 
             // btnRefresh
             // 
-            btnRefresh.BackColor = Color.Teal;
+            btnRefresh.BackColor = Color.SteelBlue;
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(12, 437);
+            btnRefresh.Location = new Point(12, 415);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(277, 56);
             btnRefresh.TabIndex = 1;
-            btnRefresh.Text = "View Donated Medications";
+            btnRefresh.Text = "View Medications";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
             // btnAccept
             // 
-            btnAccept.BackColor = Color.Teal;
+            btnAccept.BackColor = Color.SteelBlue;
             btnAccept.FlatStyle = FlatStyle.Flat;
             btnAccept.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAccept.ForeColor = Color.White;
-            btnAccept.Location = new Point(12, 499);
+            btnAccept.Location = new Point(12, 477);
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(277, 56);
             btnAccept.TabIndex = 2;
@@ -78,23 +78,23 @@
             btnAccept.UseVisualStyleBackColor = false;
             btnAccept.Click += btnAccept_Click;
             // 
-            // button1
+            // btnViewInventory
             // 
-            button1.BackColor = Color.Teal;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(12, 561);
-            button1.Name = "button1";
-            button1.Size = new Size(277, 56);
-            button1.TabIndex = 3;
-            button1.Text = "View Inventory";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnViewInventory.BackColor = Color.SteelBlue;
+            btnViewInventory.FlatStyle = FlatStyle.Flat;
+            btnViewInventory.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnViewInventory.ForeColor = Color.White;
+            btnViewInventory.Location = new Point(12, 539);
+            btnViewInventory.Name = "btnViewInventory";
+            btnViewInventory.Size = new Size(277, 56);
+            btnViewInventory.TabIndex = 3;
+            btnViewInventory.Text = "View Inventory";
+            btnViewInventory.UseVisualStyleBackColor = false;
+            btnViewInventory.Click += btnViewInventory_Click;
             // 
             // btnLogout
             // 
-            btnLogout.BackColor = Color.Teal;
+            btnLogout.BackColor = Color.SteelBlue;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.White;
@@ -110,12 +110,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(940, 629);
+            BackColor = Color.AliceBlue;
+            ClientSize = new Size(932, 603);
             Controls.Add(btnLogout);
-            Controls.Add(button1);
+            Controls.Add(btnViewInventory);
             Controls.Add(btnAccept);
             Controls.Add(btnRefresh);
             Controls.Add(dgvDonations);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PharmacistForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PharmacistForm";
@@ -128,7 +130,7 @@
         private DataGridView dgvDonations;
         private Button btnRefresh;
         private Button btnAccept;
-        private Button button1;
+        private Button btnViewInventory;
         private Button btnLogout;
     }
 }

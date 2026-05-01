@@ -102,6 +102,7 @@
             numInterval.Name = "numInterval";
             numInterval.Size = new Size(150, 27);
             numInterval.TabIndex = 5;
+            numInterval.Value = new decimal(new int[] { 8, 0, 0, 0 });
             // 
             // dtpExpiry
             // 
@@ -112,7 +113,7 @@
             // 
             // btnAddMed
             // 
-            btnAddMed.BackColor = Color.Teal;
+            btnAddMed.BackColor = Color.SteelBlue;
             btnAddMed.Cursor = Cursors.Hand;
             btnAddMed.FlatAppearance.BorderSize = 0;
             btnAddMed.FlatStyle = FlatStyle.Flat;
@@ -142,9 +143,11 @@
             // numCourseDays
             // 
             numCourseDays.Location = new Point(104, 370);
+            numCourseDays.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numCourseDays.Name = "numCourseDays";
             numCourseDays.Size = new Size(150, 27);
             numCourseDays.TabIndex = 9;
+            numCourseDays.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label6
             // 
@@ -162,10 +165,11 @@
             numTotalPills.Name = "numTotalPills";
             numTotalPills.Size = new Size(150, 27);
             numTotalPills.TabIndex = 11;
+            numTotalPills.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // btnBack
             // 
-            btnBack.BackColor = Color.Teal;
+            btnBack.BackColor = Color.SteelBlue;
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
@@ -181,8 +185,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(931, 605);
+            BackColor = Color.AliceBlue;
+            ClientSize = new Size(932, 603);
             Controls.Add(btnBack);
             Controls.Add(numTotalPills);
             Controls.Add(label6);
@@ -196,6 +200,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PatientForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MedCycle - Patient Dashboard";

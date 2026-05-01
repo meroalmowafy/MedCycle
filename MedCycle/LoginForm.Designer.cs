@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             btnPatient = new Button();
             btnPharmacist = new Button();
             txtPassword = new TextBox();
             btnDonor = new Button();
-            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // btnPatient
             // 
-            btnPatient.BackColor = Color.Teal;
+            btnPatient.BackColor = Color.SteelBlue;
             btnPatient.FlatStyle = FlatStyle.Flat;
             btnPatient.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPatient.ForeColor = Color.White;
-            btnPatient.Location = new Point(349, 165);
+            btnPatient.Location = new Point(337, 269);
             btnPatient.Name = "btnPatient";
-            btnPatient.Size = new Size(238, 58);
+            btnPatient.Size = new Size(274, 58);
             btnPatient.TabIndex = 0;
             btnPatient.Text = "Enter as Patient ";
             btnPatient.UseVisualStyleBackColor = false;
@@ -51,13 +52,13 @@
             // 
             // btnPharmacist
             // 
-            btnPharmacist.BackColor = Color.Teal;
+            btnPharmacist.BackColor = Color.SteelBlue;
             btnPharmacist.FlatStyle = FlatStyle.Flat;
             btnPharmacist.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPharmacist.ForeColor = Color.White;
-            btnPharmacist.Location = new Point(350, 391);
+            btnPharmacist.Location = new Point(337, 469);
             btnPharmacist.Name = "btnPharmacist";
-            btnPharmacist.Size = new Size(237, 58);
+            btnPharmacist.Size = new Size(274, 58);
             btnPharmacist.TabIndex = 1;
             btnPharmacist.Text = "Enter as Pharmacist";
             btnPharmacist.UseVisualStyleBackColor = false;
@@ -65,7 +66,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(403, 358);
+            txtPassword.Location = new Point(467, 546);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(125, 27);
@@ -73,39 +74,41 @@
             // 
             // btnDonor
             // 
-            btnDonor.BackColor = Color.Teal;
+            btnDonor.BackColor = Color.SteelBlue;
             btnDonor.FlatStyle = FlatStyle.Flat;
             btnDonor.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDonor.ForeColor = Color.White;
-            btnDonor.Location = new Point(349, 260);
+            btnDonor.Location = new Point(337, 370);
             btnDonor.Name = "btnDonor";
-            btnDonor.Size = new Size(238, 58);
+            btnDonor.Size = new Size(274, 58);
             btnDonor.TabIndex = 3;
-            btnDonor.Text = "Enter as Donor";
+            btnDonor.Text = "Enter as Donor / Seller";
             btnDonor.UseVisualStyleBackColor = false;
             btnDonor.Click += btnDonor_Click;
             // 
-            // label1
+            // label2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Navy;
-            label1.Location = new Point(254, 61);
-            label1.Name = "label1";
-            label1.Size = new Size(446, 54);
-            label1.TabIndex = 4;
-            label1.Text = "Welcome To MedCycle";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(354, 549);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 20);
+            label2.TabIndex = 5;
+            label2.Text = "Password :";
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(938, 524);
-            Controls.Add(label1);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(932, 603);
+            Controls.Add(label2);
             Controls.Add(btnDonor);
             Controls.Add(txtPassword);
             Controls.Add(btnPharmacist);
             Controls.Add(btnPatient);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
@@ -119,6 +122,6 @@
         private Button btnPharmacist;
         private TextBox txtPassword;
         private Button btnDonor;
-        private Label label1;
+        private Label label2;
     }
 }

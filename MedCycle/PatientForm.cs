@@ -17,15 +17,13 @@ namespace MedCycle
             // سحب البيانات من الشاشة وتخزينها في الدواء
             currentMed = new Medication
             {
-                // لو عندك مربع لاسم الدواء وتاريخ الصلاحية حطيهم هنا
-                Name = txtMedName.Text,
-                ExpiryDate = dtpExpiry.Value,
+                Name = txtMedName.Text, //اسم الدواء
+                ExpiryDate = dtpExpiry.Value, //تاريخ الانتهاء
+                // سحبنا الأرقام من الأدوات 
+                Interval = (int)numInterval.Value, //الفاصل الزمني بين الجرعات
+                Duration = (int)numCourseDays.Value, //مدة الكورس
 
-                // سحبنا الأرقام من الأدوات اللي عندك
-                Interval = (int)numInterval.Value,
-                Duration = (int)numCourseDays.Value,
-
-                // المربع الجديد بتاع إجمالي عدد الحبوب اللي لسه ضايفينه
+                // إجمالي عدد الحبوب
                 PillsCount = (int)numTotalPills.Value,
 
                 Status = MedStatus.PersonalUse
@@ -42,6 +40,11 @@ namespace MedCycle
                             MessageBoxIcon.Information);
 
             // 3. Start Timer (3 seconds for testing)
+            // -------------------------------------------------------------
+            // الكود الحقيقي لتشغيل المنبه بالساعات )
+            // int realHours = (int)numInterval.Value;
+            // reminderTimer.Interval = realHours * 60 * 60 * 1000; 
+            // -------------------------------------------------------------
             reminderTimer.Interval = 3000;
             reminderTimer.Start();
             txtMedName.Clear();
@@ -81,23 +84,25 @@ namespace MedCycle
                 // 3. نبرمج كل زرار هيعمل إيه
                 if (choice == DialogResult.Yes)
                 {
-                    // هنفتح شاشة المتبرع ونبعتلها (الاسم، الحبوب المتبقية، والتاريخ)
-                    DonorForm dForm = new DonorForm(currentMed.Name, currentMed.PillsCount, currentMed.ExpiryDate);
+                    DonorForm dForm = new DonorForm(currentMed.Name, currentMed.PillsCount, currentMed.ExpiryDate, MedStatus.DirectDonation);
                     dForm.Show();
-                    this.Close(); // نقفل شاشة المريض
+                    this.Close();
                 }
                 else if (choice == DialogResult.No)
                 {
-                    // لو اختار البيع المخفض
-                    currentMed.Status = MedStatus.DiscountedSale;
-                    GlobalData.DonatedMedications.Add(currentMed);
-                    MessageBox.Show("Your medication has been listed for a discounted sale.", "Sale Listed");
+                    // لو بيع، نفتح نفس الشاشة، بس نبعت MedStatus.DiscountedSale
+                    DonorForm dForm = new DonorForm(currentMed.Name, currentMed.PillsCount, currentMed.ExpiryDate, MedStatus.DiscountedSale);
+                    dForm.Show();
+                    this.Close();
                 }
                 else if (choice == DialogResult.Cancel)
                 {
-                    // لو اختار يحتفظ بيهم
+                    // لو احتفاظ
                     currentMed.Status = MedStatus.PersonalUse;
                     MessageBox.Show("You chose to keep the remaining pills for personal use.", "Kept");
+                    LoginForm login = new LoginForm();
+                    login.Show();
+                    this.Close();
                 }
             }
         }

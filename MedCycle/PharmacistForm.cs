@@ -17,11 +17,14 @@ namespace MedCycle
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            // 1. مسح البيانات القديمة من الجدول (عشان ميتكررش)
+            // مسح البيانات القديمة من الجدول عشان ميتكررش
             dgvDonations.DataSource = null;
-
-            // 2. ربط الجدول بالصندوق المشترك اللي عملناه في GlobalData
             dgvDonations.DataSource = GlobalData.DonatedMedications;
+
+            // إخفاء العواميد غير المهمة للصيدلي
+            dgvDonations.Columns["Interval"].Visible = false;
+            dgvDonations.Columns["Duration"].Visible = false;
+            dgvDonations.Columns["ReminderHours"].Visible = false; 
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -59,21 +62,24 @@ namespace MedCycle
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnViewInventory_Click(object sender, EventArgs e)
         {
+            // 1. نفتح شاشة المخزن
+            InventoryForm invForm = new InventoryForm();
+            invForm.Show();
 
-            InventoryForm inv = new InventoryForm();
-            inv.Show(); // بيفتح شاشة المخزن
+            // 2. نقفل شاشة الصيدلي الحالية
+            this.Close();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            // 1. نفتح شاشة البداية (اللوجين)
             LoginForm login = new LoginForm();
             login.Show();
+
+            // 2. نقفل شاشة الصيدلي الحالية )
             this.Close();
         }
     }
-
-
-
 }

@@ -39,6 +39,7 @@
             // btnPatient
             // 
             btnPatient.BackColor = Color.SteelBlue;
+            btnPatient.Cursor = Cursors.Hand;
             btnPatient.FlatStyle = FlatStyle.Flat;
             btnPatient.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPatient.ForeColor = Color.White;
@@ -53,6 +54,7 @@
             // btnPharmacist
             // 
             btnPharmacist.BackColor = Color.SteelBlue;
+            btnPharmacist.Cursor = Cursors.Hand;
             btnPharmacist.FlatStyle = FlatStyle.Flat;
             btnPharmacist.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPharmacist.ForeColor = Color.White;
@@ -75,6 +77,7 @@
             // btnDonor
             // 
             btnDonor.BackColor = Color.SteelBlue;
+            btnDonor.Cursor = Cursors.Hand;
             btnDonor.FlatStyle = FlatStyle.Flat;
             btnDonor.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDonor.ForeColor = Color.White;

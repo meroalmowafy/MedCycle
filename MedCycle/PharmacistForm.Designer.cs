@@ -53,6 +53,7 @@
             // btnRefresh
             // 
             btnRefresh.BackColor = Color.SteelBlue;
+            btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = Color.White;
@@ -67,6 +68,7 @@
             // btnAccept
             // 
             btnAccept.BackColor = Color.SteelBlue;
+            btnAccept.Cursor = Cursors.Hand;
             btnAccept.FlatStyle = FlatStyle.Flat;
             btnAccept.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAccept.ForeColor = Color.White;
@@ -81,6 +83,7 @@
             // btnViewInventory
             // 
             btnViewInventory.BackColor = Color.SteelBlue;
+            btnViewInventory.Cursor = Cursors.Hand;
             btnViewInventory.FlatStyle = FlatStyle.Flat;
             btnViewInventory.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnViewInventory.ForeColor = Color.White;
@@ -95,6 +98,7 @@
             // btnLogout
             // 
             btnLogout.BackColor = Color.SteelBlue;
+            btnLogout.Cursor = Cursors.Hand;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.White;

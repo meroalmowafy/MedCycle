@@ -50,6 +50,7 @@
             // btnBack
             // 
             btnBack.BackColor = Color.SteelBlue;
+            btnBack.Cursor = Cursors.Hand;
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
@@ -64,6 +65,7 @@
             // btnSearch
             // 
             btnSearch.BackColor = Color.SteelBlue;
+            btnSearch.Cursor = Cursors.Hand;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
@@ -78,6 +80,7 @@
             // btnDelete
             // 
             btnDelete.BackColor = Color.SteelBlue;
+            btnDelete.Cursor = Cursors.Hand;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDelete.ForeColor = Color.White;
@@ -109,6 +112,7 @@
             // btnRefresh
             // 
             btnRefresh.BackColor = Color.SteelBlue;
+            btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.ForeColor = Color.White;

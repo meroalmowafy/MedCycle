@@ -85,6 +85,7 @@
             // btnDonate
             // 
             btnDonate.BackColor = Color.SteelBlue;
+            btnDonate.Cursor = Cursors.Hand;
             btnDonate.FlatAppearance.BorderSize = 0;
             btnDonate.FlatStyle = FlatStyle.Flat;
             btnDonate.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -164,6 +165,8 @@
             // btnBack
             // 
             btnBack.BackColor = Color.SteelBlue;
+            btnBack.Cursor = Cursors.Hand;
+            btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
             btnBack.Location = new Point(12, 12);

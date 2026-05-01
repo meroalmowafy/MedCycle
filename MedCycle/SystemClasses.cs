@@ -7,7 +7,6 @@ namespace MedCycle
     public enum MedStatus
     {
         PersonalUse,
-        ForDonation,
         DiscountedSale,
         DirectDonation
     }

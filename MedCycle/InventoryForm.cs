@@ -17,19 +17,13 @@ namespace MedCycle
 
         private void InventoryForm_Load(object sender, EventArgs e)
         {
-
-            dgvInventory.DataSource = null;
-            dgvInventory.DataSource = GlobalData.PharmacyInventory;// ربط الجدول بالمخزن الجديد
-                                                                   // إخفاء الأعمدة اللي مش محتاجينها في شاشة المخزن
             if (dgvInventory.Columns.Count > 0)
             {
-                dgvInventory.Columns["Status"].Visible = false;
-                dgvInventory.Columns["ReminderHours"].Visible = false;
                 dgvInventory.Columns["Interval"].Visible = false;
                 dgvInventory.Columns["Duration"].Visible = false;
+                dgvInventory.Columns["DonorName"].Visible = false;
+                dgvInventory.Columns["DonorPhone"].Visible = false;
 
-                // تخلي الأعمدة تملأ عرض الشاشة بالكامل
-                dgvInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
 
@@ -45,82 +39,60 @@ namespace MedCycle
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // 1. بنتأكد الأول إن الجدول فيه صفوف متحددة
             if (dgvInventory.SelectedRows.Count > 0)
             {
-                // 2. بنتأكد إن الصف المتحدد ده مش الصف الفاضي الأخير (New Row)
-                if (dgvInventory.SelectedRows[0].IsNewRow)
-                {
-                    return; // لو داس على الصف الفاضي، الكود يقف وميعملش حاجة
-                }
+                int index = dgvInventory.SelectedRows[0].Index;
+                GlobalData.PharmacyInventory.RemoveAt(index);
 
-                // 3. نطلع رسالة التأكيد بعد ما اتأكدنا إن في دواء حقيقي متحدد
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    // بنجيب العنصر ونمسحه
-                    Medication selectedMed = (Medication)dgvInventory.SelectedRows[0].DataBoundItem;
-
-                    // شرط أمان إضافي عشان لو العنصر مش موجود
-                    if (selectedMed != null)
-                    {
-                        GlobalData.PharmacyInventory.Remove(selectedMed);
-
-                        // تحديث الجدول
-                        dgvInventory.DataSource = null;
-                        dgvInventory.DataSource = GlobalData.PharmacyInventory;
-                    }
-                }
+                dgvInventory.DataSource = GlobalData.PharmacyInventory;
+                MessageBox.Show("Medication has been removed from inventory", "Success!");
             }
             else
             {
-                // لو داس على الزرار والجدول فاضي أو مش محدد حاجة
-                MessageBox.Show("Please select an item from the table first.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select the midication that you need to remove", "Error!");
             }
+            dgvInventory.ClearSelection();
+            dgvInventory.CurrentCell = null;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchText = txtSearch.Text.Trim().ToLower();
+            string textsearch = txtSearch.Text;
+            var filterlist = GlobalData.PharmacyInventory.Where(x => x.Name.ToLower().Contains(textsearch)).ToList();
+            dgvInventory.DataSource = null;
+            dgvInventory.DataSource = filterlist;
 
-            // لو مربع البحث فاضي، بنعرض كل البيانات اللي في اللیست الأصلية
-            if (string.IsNullOrEmpty(searchText))
+            if (dgvInventory.Columns.Count > 0)
             {
-                dgvInventory.DataSource = null;
-                dgvInventory.DataSource = GlobalData.PharmacyInventory;
-            }
-            else
-            {
-                // بنعمل قائمة جديدة مؤقتة نشيل فيها نتائج البحث
-                List<Medication> searchResults = new List<Medication>();
-
-                // بنلف على كل الأدوية اللي في المخزن
-                foreach (Medication med in GlobalData.PharmacyInventory)
-                {
-                    //  "Name" باسم المتغير اللي بيمثل اسم الدواء في كلاس Medication
-                    if (med.Name != null && med.Name.ToLower().Contains(searchText))
-                    {
-                        searchResults.Add(med);
-                    }
-                }
-
-                // بنعمل تفريغ للجدول الأول وبعدين نعرض فيه نتائج البحث
-                dgvInventory.DataSource = null;
-                dgvInventory.DataSource = searchResults;
+                dgvInventory.Columns["Interval"].Visible = false;
+                dgvInventory.Columns["Duration"].Visible = false;
+                dgvInventory.Columns["DonorName"].Visible = false;
+                dgvInventory.Columns["DonorPhone"].Visible = false;
+                dgvInventory.Columns["ReminderHours"].Visible = false;
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            // بنفضي مربع البحث عشان نلغي أي بحث قديم
-            txtSearch.Text = "";
-
-            // بنفضي الجدول الأول
             dgvInventory.DataSource = null;
-
-            // بنخليه يعرض كل البيانات اللي في المخزن من تاني
             dgvInventory.DataSource = GlobalData.PharmacyInventory;
+            if (dgvInventory.Columns.Count > 0)
+            {
+                dgvInventory.Columns["Interval"].Visible = false;
+                dgvInventory.Columns["Duration"].Visible = false;
+                dgvInventory.Columns["DonorName"].Visible = false;
+                dgvInventory.Columns["DonorPhone"].Visible = false;
+                dgvInventory.Columns["ReminderHours"].Visible = false;
+
+
+            }
+            dgvInventory.ClearSelection();
+            dgvInventory.CurrentCell = null;
+        }
+
+        private void dgvInventory_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
         }
     }
 
